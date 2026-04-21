@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chess Evolved - Community SWF Archive</title>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-gradient-top: rgba(12, 32, 55, 0.98);
+            --bg-gradient-bottom: rgba(12, 155, 155, 0.88);
+            --accent: #0ff;
+            --accent-glow: rgba(0, 255, 255, 0.4);
+            --text: #eff;
+            --panel: rgba(5, 38, 44, 0.74);
+            --grid-line: #066;
+            --glass-rim: #3daaaa;
+            --linkcolor: #0ff;
+            --linkvisitedcolor: rgb(183, 129, 255);
+            --linkhovercolor: #eff;
+            --linkvisitedhovercolor: rgb(221, 171, 255);
+            --bg-links: #5cc;
+            --danger: #ff4444;
+        }
+
+        body {
+            margin: 0;
+            padding: 14px;
+            background-color: black;
+            background: radial-gradient(circle at center, #0a1f25 0%, #000 100%);
+            color: var(--text);
+            font-family: 'Tajawal', system-ui, -apple-system, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            overflow-y: auto;
+        }
+
+        .container {
+            max-width: 900px;
+            width: 100%;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 14px;
+            border-bottom: 2px solid var(--accent);
+            padding-bottom: 14px;
+        }
+
+        h1 {
+            color: var(--accent);
+            text-transform: uppercase;
+            text-shadow: 0 0 15px var(--accent-glow);
+            margin: 0;
+        }
+
+        .info-panel {
+            background: var(--panel);
+            border: 1px solid var(--glass-rim);
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 4px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+        }
+
+        .safety-notice {
+            border-left: 4px solid var(--danger);
+        }
+
+        .safety-notice h2 {
+            color: var(--danger);
+            font-size: 1.1rem;
+            margin-top: 0;
+        }
+
+        .instructions h2 {
+            color: var(--accent);
+            font-size: 1.1rem;
+            margin-top: 0;
+        }
+
+        code {
+            background: rgba(0,0,0,0.4);
+            padding: 2px 6px;
+            color: var(--accent);
+            font-family: 'Consolas', monospace;
+        }
+
+        .mod-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 14px;
+            margin-top: 14px;
+        }
+
+        .mod-card {
+            background: var(--panel);
+            border: 1px solid var(--grid-line);
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: transform 0.2s;
+        }
+
+        .mod-card:hover {
+            border-color: var(--accent);
+            background: rgba(5, 50, 58, 0.9);
+        }
+
+        .mod-info h3 {
+            margin: 0;
+            color: var(--accent);
+            font-size: 1.2rem;
+        }
+
+        .mod-meta {
+            font-size: 0.8rem;
+            color: #699;
+            margin-top: 5px;
+        }
+
+        .actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        /* Buttons from original CSS */
+        button, .btn-link {
+            box-shadow: inset 0px 1px 0px 0px #97c4fe;
+            padding: 8px 15px;
+            border: 2px outset #3daaaa;
+            border-radius: 2px;
+            background-color: #3dcccc;
+            color: #ffffff;
+            font-family: 'Tajawal';
+            font-size: 13px;
+            font-weight: bold;
+            text-decoration: none;
+            text-align: center;
+            text-shadow: 1px 1px 0px #1570cd;
+            cursor: pointer;
+            display: inline-block;
+            line-height: 1.2;
+        }
+
+        button:hover, .btn-link:hover {
+            background-color: #5ef6f6;
+            color: #fff;
+        }
+
+        .btn-steam {
+            background-color: #b781ff;
+            border-color: #8c5cd6;
+            text-shadow: 1px 1px 0px #5a2ea0;
+            box-shadow: inset 0px 1px 0px 0px #d4b8ff;
+        }
+
+        .btn-steam:hover {
+            background-color: #d1afff;
+        }
+
+        .ffdec-link {
+            color: var(--accent);
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .mod-card {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+            .actions {
+                width: 100%;
+            }
+            .btn-link {
+                flex: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>Chess Evolved & Mods Archive</h1>
+    </header>
+
+    <div class="info-panel safety-notice">
+        <h2>⚠️ Spaghetti Warning</h2>
+        <p>These are player-made mods and, if you watched the hacker saga, people have VIRUS PARANOIA. For maximum security, download <a href="https://github.com/jindrapetrik/jpexs-decompiler" class="ffdec-link" target="_blank">FFDEC (JPEXS Free Flash Decompiler)</a> to decompile and diff these files against the original. :skull: We really need an auto diffing tool for this.</p>
+    </div>
+
+    <div class="info-panel instructions">
+        <h2>How to Install</h2>
+        <ol>
+            <li>Download your preferred mod.</li>
+            <li>In Steam: Right-click <strong>Chess Evolved</strong>.</li>
+            <li>Select <strong>Manage</strong> &gt; <strong>Browse local files</strong>.</li>
+            <li>Rename the downloaded file to <code>ChessEvolved.swf</code>.</li>
+            <li>Drag and drop the renamed file into the folder (Replace existing).</li>
+            <li>chess battle advanced</li>
+        </ol>
+    </div>
+
+    <div class="mod-grid">
+        <!-- Original File -->
+        <div class="mod-card">
+            <div class="mod-info">
+                <h3>ChessEvolved.swf</h3>
+                <div class="mod-meta">Original Base Game ~ Size: 5.8 MB</div>
+            </div>
+            <div class="actions">
+                <a href="ChessEvolved.swf" class="btn-link" download>Download</a>
+            </div>
+        </div>
+
+        <!-- Adam's Testv3 -->
+        <div class="mod-card">
+            <div class="mod-info">
+                <h3>ChessEvolved Testv3 - Adam.swf</h3>
+                <div class="mod-meta">Modded by Adam ~ Size: 9.1 MB</div>
+            </div>
+            <div class="actions">
+                <a href="ChessEvolved Testv3 - Adam.swf" class="btn-link" download>Download Original</a>
+            </div>
+        </div>
+
+        <!-- guhbuh Vintage -->
+        <div class="mod-card">
+            <div class="mod-info">
+                <h3>ChessEvolvedVintageV.03 - guhbuh.swf</h3>
+                <div class="mod-meta">Modded by ecarbmetceleslevel ~ Size: 5.8 MB</div>
+            </div>
+            <div class="actions">
+                <a href="ChessEvolvedVintageV.03 - guhbuh.swf" class="btn-link" download>Download Original</a>
+            </div>
+        </div>
+
+        <!-- Tournament Patch -->
+        <div class="mod-card">
+            <div class="mod-info">
+                <h3>V0.56.5TournamentPatch - e3.swf</h3>
+                <div class="mod-meta">Modded by e3 ~ Size: 5.8 MB</div>
+            </div>
+            <div class="actions">
+                <a href="V0.56.5TournamentPatch - e3.swf" class="btn-link" download>Download Original</a>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
