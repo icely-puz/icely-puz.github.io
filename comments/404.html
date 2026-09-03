@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>icely comments</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&family=Tajawal:wght@200;300;400;500;700;800;900&family=Open+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/comments/site-fallback.css">
+  <link rel="stylesheet" href="https://icely.neocities.org/styles.css">
+  <link rel="stylesheet" href="/comments/comments.css">
+</head>
+<body>
+<div class="comments-frame">
+<div aria-live="polite" class="comments-status"></div>
+<div aria-live="polite" class="comments-list"></div>
+<form class="comments-form">
+<label>Username<input autocomplete="nickname" class="comments-username-input" maxlength="80" name="username" required="" type="text"/></label>
+<label>Comment<textarea maxlength="100000" name="body" placeholder="Put your comment here, especially if you feel you have a unique take on the topic!" required=""></textarea></label>
+<input name="parentId" type="hidden" value=""/>
+<input aria-hidden="true" autocomplete="off" class="comments-honeypot" name="website" tabindex="-1" type="text"/>
+<div class="comments-form-actions"><button class="comments-submit" type="submit">send</button><span aria-live="polite" class="comments-form-hint"></span></div>
+</form>
+</div>
+<script src="/comments/markdown.js"></script>
+<script src="/comments/comments.js"></script>
+</body>
+</html>
