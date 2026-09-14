@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random of the Day</title>
+</head>
+<body>
+    <script>
+        const files = [
+"0.png","1.png","2.mp4","3.png","4.png","5.webp","6.png","7.png","8.webp","9.mp4",
+"10.webp","11.png","12.webp","13.webp","14.webp","15.webp","16.png","17.webp","18.png","19.png",
+"20.mp4","21.webp","22.png","23.png","24.png","25.png","26.webp","27.png","28.webp","29.mp4",
+"30.webp","31.png","32.png","33.png","34.png","35.png","36.webp","37.png","38.webp","39.webp",
+"40.png","41.png","42.png","43.png","44.png","45.png","46.webp","47.png","48.webp","49.webp",
+"50.png","51.webp","52.png","53.png","54.png","55.png","56.webp","57.webp","58.png","59.png",
+"60.mp4","61.webp","62.webp","63.webp","64.png","65.webp","66.webp","67.png","68.png","69.png",
+"70.webp","71.mp4","72.png","73.webp","74.png","75.webp","76.webp","77.png","78.png","79.png",
+"80.png","81.webp","82.webp","83.png","84.png","85.png","86.webp","87.png","88.webp","89.png",
+"90.webp","91.png","92.png","93.webp","94.png","95.webp","96.png","97.webp","98.webp","99.webp",
+"100.webp","101.mp4","102.mp4","103.webp","104.webp","105.webp","106.png","107.png","108.png","109.webp",
+"110.png","111.png","112.png","113.webp","114.webp","115.png","116.png","117.png","118.webp","119.png",
+"120.png","121.webp","122.webp","123.png","124.webp","125.webp","126.png","127.png","128.png","129.png",
+"130.png","131.png","132.png","133.png","134.png","135.png","136.webp","137.png","138.png","139.png",
+"140.png","141.png","142.png","143.png","144.png","145.png","146.png","147.png","148.png","149.png",
+"150.png","151.png","152.png","153.png","154.png","155.png","156.png","157.png","158.png","159.webp",
+"160.webp","161.webp","162.webp","163.webp","164.webp","165.webp","166.webp","167.webp","168.png","169.webp",
+"170.webp","171.webp","172.webp","173.png","174.webp","175.webp","176.webp","177.webp","178.webp","179.png",
+"180.png","181.png","182.png","183.png","184.png","185.png","186.png","187.png","188.png","189.png",
+"190.png","191.png","192.png","193.mp4","194.png","195.png","196.png","197.png","198.png","199.png",
+"200.png","201.png","202.png","203.png","204.png","205.png","206.png","207.png","208.png","209.png",
+"210.png","211.png","212.png","213.png","214.png","215.png","216.png","217.png","218.png","219.png",
+"220.png","221.png","222.png","223.png","224.png","225.png","226.png","227.png","228.png","229.png",
+"230.png","231.png","232.png","233.png","234.png","235.png","236.png","237.png","238.png","239.png",
+"240.png","241.png","242.png","243.png","244.png","245.png","246.png","247.png","248.png","249.png",
+"250.png","251.png","252.png","253.mp4","254.png","255.png","256.png","257.mp4","258.png","259.png",
+"260.png","261.png","262.png","263.png","264.png","265.png","266.png","267.png","268.png","269.png",
+"270.png","271.png","272.png","273.png","274.png","275.png","276.png","277.png","278.png","279.png",
+"280.png","281.png","282.png","283.png","284.png","285.png","286.png","287.png","288.png","289.png",
+"290.png","291.png","292.png","293.png","294.png","295.png","296.png","297.png","298.png","299.png",
+"300.gif","301.png","302.png","303.png","304.png","305.png","306.png","307.png","308.png","309.png",
+"310.png","311.png","312.png","313.png","314.png","315.png","316.png","317.png","318.png","319.png",
+"320.png","321.png","322.png","323.png","324.png","325.png","326.png","327.png","328.png","329.png",
+"330.png","331.png","332.png","333.png","334.png","335.png","336.png","337.png","338.png","339.png",
+"340.png","341.png","342.png","343.png","344.png","345.png","346.png","347.png","348.png","349.png",
+"350.png","351.png","352.png","353.png","354.png","355.png","356.png","357.png","358.png","359.png",
+"360.png","361.png","362.png","363.png","364.png","365.png","366.png","367.png","368.png","369.png",
+"370.png","371.png","372.png","373.png","374.png","375.png","376.png","377.png","378.png","379.png",
+"380.png"
+        ];
+
+        // Mix the day before choosing so consecutive days do not produce
+        // nearly identical values from the random generator.
+        function seededRandom(seed) {
+            let s = seed >>> 0;
+            return function() {
+                let t = s += 0x6D2B79F5;
+                t = Math.imul(t ^ (t >>> 15), t | 1);
+                t ^= t + Math.imul(t ^ (t >>> 7), t | 61);
+                return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+            };
+        }
+
+        // Use UTC so every visitor gets the same toad for the same calendar day.
+        const day = Math.floor(Date.now() / 86400000);
+        const rng = seededRandom(day);
+        const chosen = files[Math.floor(rng() * files.length)];
+        const path = new URL('toads/' + chosen, document.baseURI).href;
+
+        const media = chosen.endsWith('.mp4')
+            ? document.createElement('video')
+            : document.createElement('img');
+        media.src = path;
+        media.style.maxWidth = '100vw';
+        media.style.maxHeight = '100vh';
+        if (chosen.endsWith('.mp4')) {
+            media.controls = true;
+            media.autoplay = true;
+            media.muted = true;
+            media.loop = true;
+        } else {
+            media.alt = 'Random toad of the day';
+        }
+        document.body.appendChild(media);
+
+        // Rotate automatically if the page stays open across midnight UTC.
+        const nextDay = (day + 1) * 86400000;
+        setTimeout(() => window.location.reload(), nextDay - Date.now());
+    </script>
+</body>
+</html>
